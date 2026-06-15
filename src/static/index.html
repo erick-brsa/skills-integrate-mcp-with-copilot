@@ -8,36 +8,125 @@
   </head>
   <body>
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <div class="header-copy">
+        <p class="eyebrow">Mergington High School</p>
+        <h1>Extracurricular Activities</h1>
+        <h2>Sign in as a student or club head and keep your session across refreshes.</h2>
+      </div>
+      <div class="auth-shell">
+        <div>
+          <p class="auth-label">Current session</p>
+          <p id="auth-status" class="auth-status">Not signed in</p>
+        </div>
+        <button id="logout-button" class="secondary-button hidden" type="button">Log out</button>
+      </div>
     </header>
 
-    <main>
-      <section id="activities-container">
-        <h3>Available Activities</h3>
-        <div id="activities-list">
-          <!-- Activities will be loaded here -->
-          <p>Loading activities...</p>
-        </div>
-      </section>
+    <main class="dashboard-layout">
+      <div class="primary-column">
+        <section id="activities-container" class="panel">
+          <div class="section-heading">
+            <p class="section-kicker">Browse activities</p>
+            <h3>Available Activities</h3>
+            <p>Review the options, schedules, and current participants before you register.</p>
+          </div>
+          <div id="activities-list">
+            <!-- Activities will be loaded here -->
+            <p>Loading activities...</p>
+          </div>
+        </section>
 
-      <section id="signup-container">
-        <h3>Sign Up for an Activity</h3>
-        <form id="signup-form">
+        <section id="signup-container" class="panel">
+          <div class="section-heading">
+            <p class="section-kicker">Registration</p>
+            <h3>Sign Up for an Activity</h3>
+            <p>Use the student email tied to your signed-in account to register for an activity.</p>
+          </div>
+          <form id="signup-form">
+            <div class="form-group">
+              <label for="email">Student Email:</label>
+              <input type="email" id="email" required placeholder="your-email@mergington.edu" />
+            </div>
+            <div class="form-group">
+              <label for="activity">Select Activity:</label>
+              <select id="activity" required>
+                <option value="">-- Select an activity --</option>
+                <!-- Activity options will be loaded here -->
+              </select>
+            </div>
+            <button type="submit">Sign Up</button>
+          </form>
+          <div id="message" class="hidden"></div>
+        </section>
+      </div>
+
+      <section id="auth-container" class="panel panel-auth">
+        <div class="section-heading">
+          <p class="section-kicker">Account access</p>
+          <h3>Authentication</h3>
+          <p>Sign in with an existing account or create a new one before you register for activities.</p>
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+          <button id="signin-tab" class="tab-button active" type="button">Sign in</button>
+          <button id="signup-tab" class="tab-button" type="button">Sign up</button>
+        </div>
+
+        <form id="signup-form-auth" class="auth-form hidden">
           <div class="form-group">
-            <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
+            <label for="signup-name">Name:</label>
+            <input type="text" id="signup-name" required placeholder="Your full name" />
           </div>
           <div class="form-group">
-            <label for="activity">Select Activity:</label>
-            <select id="activity" required>
-              <option value="">-- Select an activity --</option>
-              <!-- Activity options will be loaded here -->
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" required placeholder="your-email@mergington.edu" />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" required placeholder="Create a password" />
+          </div>
+          <div class="form-group">
+            <label for="signup-role">Role:</label>
+            <select id="signup-role" required>
+              <option value="student">Student</option>
+              <option value="club_head">Club head</option>
             </select>
           </div>
-          <button type="submit">Sign Up</button>
+          <div class="form-group club-field hidden" id="signup-club-group">
+            <label for="signup-club">Club:</label>
+            <select id="signup-club">
+              <option value="">Loading clubs...</option>
+            </select>
+          </div>
+          <button type="submit">Create account</button>
         </form>
-        <div id="message" class="hidden"></div>
+
+        <form id="signin-form" class="auth-form">
+          <div class="form-group">
+            <label for="signin-role">Role:</label>
+            <select id="signin-role" required>
+              <option value="student">Student</option>
+              <option value="club_head">Club head</option>
+            </select>
+          </div>
+          <div class="form-group club-field hidden" id="signin-club-group">
+            <label for="signin-club">Club:</label>
+            <select id="signin-club">
+              <option value="">Loading clubs...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="signin-email">Email:</label>
+            <input type="email" id="signin-email" required placeholder="your-email@mergington.edu" />
+          </div>
+          <div class="form-group">
+            <label for="signin-password">Password:</label>
+            <input type="password" id="signin-password" required placeholder="Enter your password" />
+          </div>
+          <button type="submit">Sign in</button>
+        </form>
+
+        <div id="auth-message" class="hidden"></div>
       </section>
     </main>
 
